@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book My Click | Photographers</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8f8f8;
+            color: #333;
+        }
+
+        nav {
+            background: #222;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ff4d6d;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: #ff4d6d;
+        }
+
+        .heading {
+            text-align: center;
+            padding: 50px 20px 30px;
+        }
+
+        .heading h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            color: #666;
+        }
+
+        .filters {
+            width: 85%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .filters button {
+            padding: 10px 18px;
+            border: 1px solid #ff4d6d;
+            background: white;
+            color: #ff4d6d;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .filters button:hover,
+        .filters button.active {
+            background: #ff4d6d;
+            color: white;
+        }
+
+        .grid {
+            width: 85%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .content h3 {
+            margin-bottom: 8px;
+        }
+
+        .category {
+            color: #ff4d6d;
+            font-weight: bold;
+        }
+
+        .rating {
+            color: #f5a623;
+            margin: 10px 0;
+        }
+
+        .location {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .profile-btn {
+            display: block;
+            text-align: center;
+            background: #ff4d6d;
+            color: white;
+            text-decoration: none;
+            padding: 11px;
+            border-radius: 6px;
+        }
+
+        .profile-btn:hover {
+            background: #e6395c;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media(max-width:700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 8px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+    <div class="logo">
+        📸 Book My Click
+    </div>
+
+    <div>
+
+        <a href="index.html">Home</a>
+
+        <a href="photographers.html">
+            Photographers
+        </a>
+
+        <a href="services.html">
+            Services
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+    </div>
+
+</nav>
+
+
+<div class="heading">
+
+    <h1>Find Your Photographer</h1>
+
+    <p>
+        Choose the perfect photographer for your special occasion.
+    </p>
+
+</div>
+
+
+<div class="filters">
+
+    <button class="active"
+            onclick="filterPhotographers('all', this)">
+        All
+    </button>
+
+    <button onclick="filterPhotographers('wedding', this)">
+        💍 Weddings
+    </button>
+
+    <button onclick="filterPhotographers('portrait', this)">
+        👤 Portraits
+    </button>
+
+    <button onclick="filterPhotographers('event', this)">
+        🎉 Events
+    </button>
+
+    <button onclick="filterPhotographers('corporate', this)">
+        🏢 Corporate
+    </button>
+
+</div>
+
+
+<div class="grid">
+
+
+    <!-- 1 -->
+
+    <div class="card wedding">
+
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552">
+
+        <div class="content">
+
+            <h3>Dream Lens Studio</h3>
+
+            <div class="category">
+                💍 Wedding Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.9
+            </div>
+
+            <div class="location">
+                📍 Vijayawada
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Dream%20Lens%20Studio">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 2 -->
+
+    <div class="card wedding">
+
+        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866">
+
+        <div class="content">
+
+            <h3>Royal Frames</h3>
+
+            <div class="category">
+                💍 Wedding Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.8
+            </div>
+
+            <div class="location">
+                📍 Hyderabad
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Royal%20Frames">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 3 -->
+
+    <div class="card wedding">
+
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc">
+
+        <div class="content">
+
+            <h3>Forever Clicks</h3>
+
+            <div class="category">
+                💍 Wedding Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.7
+            </div>
+
+            <div class="location">
+                📍 Bangalore
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Forever%20Clicks">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 4 -->
+
+    <div class="card portrait">
+
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb">
+
+        <div class="content">
+
+            <h3>Frame Stories</h3>
+
+            <div class="category">
+                👤 Portrait Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.8
+            </div>
+
+            <div class="location">
+                📍 Hyderabad
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Frame%20Stories">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 5 -->
+
+    <div class="card portrait">
+
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1">
+
+        <div class="content">
+
+            <h3>Pixel Portraits</h3>
+
+            <div class="category">
+                👤 Portrait Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.6
+            </div>
+
+            <div class="location">
+                📍 Bangalore
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Pixel%20Portraits">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 6 -->
+
+    <div class="card portrait">
+
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+
+        <div class="content">
+
+            <h3>Lens & Light</h3>
+
+            <div class="category">
+                👤 Portrait Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.9
+            </div>
+
+            <div class="location">
+                📍 Vijayawada
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Lens%20%26%20Light">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 7 -->
+
+    <div class="card event">
+
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30">
+
+        <div class="content">
+
+            <h3>Click Moments</h3>
+
+            <div class="category">
+                🎉 Event Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.7
+            </div>
+
+            <div class="location">
+                📍 Vijayawada
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Click%20Moments">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 8 -->
+
+    <div class="card event">
+
+        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3">
+
+        <div class="content">
+
+            <h3>Eventure Photography</h3>
+
+            <div class="category">
+                🎉 Event Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.8
+            </div>
+
+            <div class="location">
+                📍 Hyderabad
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Eventure%20Photography">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 9 -->
+
+    <div class="card event">
+
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622">
+
+        <div class="content">
+
+            <h3>Moments Hub</h3>
+
+            <div class="category">
+                🎉 Event Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.6
+            </div>
+
+            <div class="location">
+                📍 Bangalore
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Moments%20Hub">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 10 -->
+
+    <div class="card corporate">
+
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72">
+
+        <div class="content">
+
+            <h3>Corporate Clicks</h3>
+
+            <div class="category">
+                🏢 Corporate Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.9
+            </div>
+
+            <div class="location">
+                📍 Hyderabad
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Corporate%20Clicks">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 11 -->
+
+    <div class="card corporate">
+
+        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678">
+
+        <div class="content">
+
+            <h3>Business Lens</h3>
+
+            <div class="category">
+                🏢 Corporate Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.8
+            </div>
+
+            <div class="location">
+                📍 Bangalore
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=Business%20Lens">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 12 -->
+
+    <div class="card corporate">
+
+        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72">
+
+        <div class="content">
+
+            <h3>ProShot Studio</h3>
+
+            <div class="category">
+                🏢 Corporate Photography
+            </div>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ 4.7
+            </div>
+
+            <div class="location">
+                📍 Vijayawada
+            </div>
+
+            <a class="profile-btn"
+               href="photographer-profile.html?name=ProShot%20Studio">
+                View Profile
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    © 2026 Book My Click |
+    Capture Your Special Moments 📸
+
+</footer>
+
+
+<script>
+
+function filterPhotographers(type, button) {
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    const buttons =
+        document.querySelectorAll(".filters button");
+
+    buttons.forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+
+    cards.forEach(card => {
+
+        if (
+            type === "all" ||
+            card.classList.contains(type)
+        ) {
+            card.style.display = "block";
+        }
+        else {
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>
+```

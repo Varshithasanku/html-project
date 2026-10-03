@@ -1,0 +1,1149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Book My Click | Photographer Profile</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7f7f7;
+            color: #333;
+        }
+
+        nav {
+            background: #222;
+            padding: 18px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ff4d6d;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: #ff4d6d;
+        }
+
+        .profile {
+            width: 85%;
+            margin: 40px auto;
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 30px;
+
+            display: flex;
+
+            gap: 30px;
+
+            align-items: center;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.1);
+        }
+
+        .profile img {
+            width: 260px;
+            height: 260px;
+
+            object-fit: cover;
+
+            border-radius: 15px;
+        }
+
+        .profile h1 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .category {
+            color: #ff4d6d;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .rating {
+            color: #f5a623;
+            margin: 10px 0;
+        }
+
+        .details {
+            color: #666;
+            line-height: 1.9;
+        }
+
+        .buttons {
+            margin-top: 20px;
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+        .buttons button {
+            padding: 12px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .contact {
+            background: white;
+            color: #ff4d6d;
+            border: 1px solid #ff4d6d !important;
+        }
+
+        .chat {
+            background: #333;
+            color: white;
+        }
+
+        .book {
+            background: #ff4d6d;
+            color: white;
+        }
+
+        .section {
+            width: 85%;
+            margin: 40px auto;
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+        }
+
+        .about {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            line-height: 1.7;
+        }
+
+        .gallery {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 18px;
+        }
+
+        .photo {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            transition: .4s;
+        }
+
+        .photo:hover img {
+            transform: scale(1.08);
+        }
+
+        .photo span {
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            background: rgba(0,0,0,.7);
+
+            color: white;
+
+            padding: 12px;
+
+            text-align: center;
+        }
+
+        .packages {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(240px, 1fr));
+
+            gap: 20px;
+        }
+
+        .package {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+
+            box-shadow:
+                0 3px 12px rgba(0,0,0,.08);
+        }
+
+        .package h3 {
+            color: #ff4d6d;
+        }
+
+        .package h2 {
+            margin: 10px 0;
+        }
+
+        .package ul {
+            list-style: none;
+            line-height: 2;
+        }
+
+        .reviews {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 20px;
+        }
+
+        .review {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .stars {
+            color: #f5a623;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            z-index: 1000;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0,0,0,.6);
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+
+            width: 90%;
+            max-width: 450px;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+
+            right: 20px;
+            top: 12px;
+
+            font-size: 28px;
+
+            cursor: pointer;
+        }
+
+        .contact-box {
+            background: #f5f5f5;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            margin-top: 12px;
+        }
+
+        @media(max-width:700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 8px;
+            }
+
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+    <div class="logo">
+        📸 Book My Click
+    </div>
+
+    <div>
+
+        <a href="index.html">Home</a>
+
+        <a href="photographers.html">
+            Photographers
+        </a>
+
+        <a href="services.html">
+            Services
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- PROFILE -->
+
+
+<div class="profile">
+
+
+    <img id="profileImage"
+         src=""
+         alt="Photographer">
+
+
+    <div>
+
+        <h1 id="name">
+            Photographer
+        </h1>
+
+
+        <div class="category"
+             id="category">
+        </div>
+
+
+        <div class="rating">
+            ⭐⭐⭐⭐⭐
+            <span id="rating"></span>
+        </div>
+
+
+        <div class="details">
+
+            📍 <span id="location"></span>
+            <br>
+
+            📸 <span id="experience"></span>
+            Years Experience
+            <br>
+
+            👥 250+ Events Covered
+
+        </div>
+
+
+        <div class="buttons">
+
+
+            <button class="contact"
+                    onclick="openContact()">
+
+                📞 Contact Photographer
+
+            </button>
+
+
+            <button class="chat"
+                    onclick="chat()">
+
+                💬 Chat with Photographer
+
+            </button>
+
+
+            <button class="book"
+                    onclick="book()">
+
+                📅 Book Now
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ABOUT -->
+
+
+<div class="section">
+
+    <h2>
+        About Photographer
+    </h2>
+
+    <div class="about"
+         id="about">
+    </div>
+
+</div>
+
+
+
+<!-- PREVIOUS EVENTS -->
+
+
+<div class="section">
+
+    <h2>
+        Previous Events & Photos
+    </h2>
+
+    <div class="gallery">
+
+
+        <div class="photo">
+
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552">
+
+            <span>
+                Wedding Ceremony
+            </span>
+
+        </div>
+
+
+        <div class="photo">
+
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc">
+
+            <span>
+                Couple Wedding Shoot
+            </span>
+
+        </div>
+
+
+        <div class="photo">
+
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30">
+
+            <span>
+                Birthday Celebration
+            </span>
+
+        </div>
+
+
+        <div class="photo">
+
+            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3">
+
+            <span>
+                Private Party
+            </span>
+
+        </div>
+
+
+        <div class="photo">
+
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1">
+
+            <span>
+                Portrait Session
+            </span>
+
+        </div>
+
+
+        <div class="photo">
+
+            <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678">
+
+            <span>
+                Corporate Event
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- PACKAGES -->
+
+
+<div class="section">
+
+    <h2>
+        Photography Packages
+    </h2>
+
+
+    <div class="packages">
+
+
+        <div class="package">
+
+            <h3>
+                Basic
+            </h3>
+
+            <h2>
+                ₹8,000
+            </h2>
+
+            <ul>
+
+                <li>✔ 4 Hours Coverage</li>
+
+                <li>✔ 100 Edited Photos</li>
+
+                <li>✔ Digital Album</li>
+
+                <li>✔ Online Delivery</li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="package">
+
+            <h3>
+                Premium
+            </h3>
+
+            <h2>
+                ₹18,000
+            </h2>
+
+            <ul>
+
+                <li>✔ 8 Hours Coverage</li>
+
+                <li>✔ 300 Edited Photos</li>
+
+                <li>✔ Cinematic Video</li>
+
+                <li>✔ Premium Album</li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="package">
+
+            <h3>
+                Wedding
+            </h3>
+
+            <h2>
+                ₹30,000
+            </h2>
+
+            <ul>
+
+                <li>✔ Full Day Coverage</li>
+
+                <li>✔ Unlimited Photos</li>
+
+                <li>✔ Candid Photography</li>
+
+                <li>✔ Wedding Film</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- REVIEWS -->
+
+
+<div class="section">
+
+    <h2>
+        Customer Reviews
+    </h2>
+
+
+    <div class="reviews">
+
+
+        <div class="review">
+
+            <div class="stars">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <p>
+                Amazing photography! The photographer
+                captured all our special moments beautifully.
+            </p>
+
+            <br>
+
+            <b>
+                — Priya
+            </b>
+
+        </div>
+
+
+        <div class="review">
+
+            <div class="stars">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <p>
+                Very professional and friendly.
+                The photos were delivered on time.
+            </p>
+
+            <br>
+
+            <b>
+                — Rahul
+            </b>
+
+        </div>
+
+
+        <div class="review">
+
+            <div class="stars">
+                ⭐⭐⭐⭐
+            </div>
+
+            <p>
+                Loved the candid photos.
+                Great experience.
+            </p>
+
+            <br>
+
+            <b>
+                — Ananya
+            </b>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- CONTACT POPUP -->
+
+
+<div class="modal"
+     id="contactModal">
+
+
+    <div class="modal-content">
+
+        <span class="close"
+              onclick="closeContact()">
+            ×
+        </span>
+
+
+        <h2>
+            Contact Photographer
+        </h2>
+
+
+        <div class="contact-box">
+
+            📞 <b>Phone</b>
+
+            <br>
+
+            +91 98765 43210
+
+        </div>
+
+
+        <div class="contact-box">
+
+            📧 <b>Email</b>
+
+            <br>
+
+            photographer@example.com
+
+        </div>
+
+
+        <div class="contact-box">
+
+            📍 <b>Location</b>
+
+            <br>
+
+            <span id="contactLocation"></span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<footer>
+
+    © 2026 Book My Click |
+    Capture Your Special Moments 📸
+
+</footer>
+
+
+
+<script>
+
+
+/* PHOTOGRAPHER DATA */
+
+
+const photographers = {
+
+
+    "Dream Lens Studio": {
+
+        category: "💍 Wedding Photography",
+
+        location: "Vijayawada",
+
+        rating: "4.9",
+
+        experience: "8",
+
+        image:
+        "https://images.unsplash.com/photo-1519741497674-611481863552",
+
+        about:
+        "Dream Lens Studio specializes in candid wedding photography, traditional ceremonies and cinematic wedding films. Our goal is to capture genuine emotions and unforgettable moments."
+
+    },
+
+
+    "Royal Frames": {
+
+        category: "💍 Wedding Photography",
+
+        location: "Hyderabad",
+
+        rating: "4.8",
+
+        experience: "7",
+
+        image:
+        "https://images.unsplash.com/photo-1606800052052-a08af7148866",
+
+        about:
+        "Royal Frames provides traditional and candid wedding photography with a focus on elegant portraits, ceremonies and emotional family moments."
+
+    },
+
+
+    "Forever Clicks": {
+
+        category: "💍 Wedding Photography",
+
+        location: "Bangalore",
+
+        rating: "4.7",
+
+        experience: "6",
+
+        image:
+        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc",
+
+        about:
+        "Forever Clicks creates romantic wedding stories through candid photography and cinematic visuals."
+
+    },
+
+
+    "Frame Stories": {
+
+        category: "👤 Portrait Photography",
+
+        location: "Hyderabad",
+
+        rating: "4.8",
+
+        experience: "5",
+
+        image:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+
+        about:
+        "Frame Stories specializes in creative portraits, fashion photography and professional profile photography."
+
+    },
+
+
+    "Pixel Portraits": {
+
+        category: "👤 Portrait Photography",
+
+        location: "Bangalore",
+
+        rating: "4.6",
+
+        experience: "4",
+
+        image:
+        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1",
+
+        about:
+        "Pixel Portraits focuses on modern portraits, fashion shoots and creative personal photography."
+
+    },
+
+
+    "Lens & Light": {
+
+        category: "👤 Portrait Photography",
+
+        location: "Vijayawada",
+
+        rating: "4.9",
+
+        experience: "7",
+
+        image:
+        "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+
+        about:
+        "Lens & Light creates natural portraits using creative lighting and professional photography techniques."
+
+    },
+
+
+    "Click Moments": {
+
+        category: "🎉 Event Photography",
+
+        location: "Vijayawada",
+
+        rating: "4.7",
+
+        experience: "6",
+
+        image:
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+
+        about:
+        "Click Moments covers birthdays, engagements, parties and family celebrations with creative event photography."
+
+    },
+
+
+    "Eventure Photography": {
+
+        category: "🎉 Event Photography",
+
+        location: "Hyderabad",
+
+        rating: "4.8",
+
+        experience: "8",
+
+        image:
+        "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3",
+
+        about:
+        "Eventure Photography specializes in professional event coverage, parties and celebrations."
+
+    },
+
+
+    "Moments Hub": {
+
+        category: "🎉 Event Photography",
+
+        location: "Bangalore",
+
+        rating: "4.6",
+
+        experience: "5",
+
+        image:
+        "https://images.unsplash.com/photo-1511795409834-ef04bbd61622",
+
+        about:
+        "Moments Hub captures birthdays, family functions and special celebrations."
+
+    },
+
+
+    "Corporate Clicks": {
+
+        category: "🏢 Corporate Photography",
+
+        location: "Hyderabad",
+
+        rating: "4.9",
+
+        experience: "9",
+
+        image:
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72",
+
+        about:
+        "Corporate Clicks provides professional photography for conferences, meetings, product launches and corporate events."
+
+    },
+
+
+    "Business Lens": {
+
+        category: "🏢 Corporate Photography",
+
+        location: "Bangalore",
+
+        rating: "4.8",
+
+        experience: "7",
+
+        image:
+        "https://images.unsplash.com/photo-1505373877841-8d25f7d46678",
+
+        about:
+        "Business Lens specializes in corporate events, conferences, seminars and professional business photography."
+
+    },
+
+
+    "ProShot Studio": {
+
+        category: "🏢 Corporate Photography",
+
+        location: "Vijayawada",
+
+        rating: "4.7",
+
+        experience: "6",
+
+        image:
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72",
+
+        about:
+        "ProShot Studio provides professional corporate photography, headshots and event coverage."
+
+    }
+
+};
+
+
+
+/* GET NAME FROM URL */
+
+
+const params =
+new URLSearchParams(
+    window.location.search
+);
+
+
+const photographerName =
+params.get("name");
+
+
+
+/* DISPLAY DATA */
+
+
+if (photographers[photographerName]) {
+
+
+    const p =
+    photographers[photographerName];
+
+
+    document.getElementById("name")
+        .innerText =
+        photographerName;
+
+
+    document.getElementById("category")
+        .innerText =
+        p.category;
+
+
+    document.getElementById("location")
+        .innerText =
+        p.location;
+
+
+    document.getElementById("contactLocation")
+        .innerText =
+        p.location;
+
+
+    document.getElementById("rating")
+        .innerText =
+        p.rating;
+
+
+    document.getElementById("experience")
+        .innerText =
+        p.experience;
+
+
+    document.getElementById("profileImage")
+        .src =
+        p.image;
+
+
+    document.getElementById("about")
+        .innerText =
+        p.about;
+
+}
+
+
+
+/* CONTACT */
+
+
+function openContact() {
+
+    document.getElementById("contactModal")
+        .style.display = "flex";
+
+}
+
+
+function closeContact() {
+
+    document.getElementById("contactModal")
+        .style.display = "none";
+
+}
+
+
+
+/* CHAT */
+
+
+function chat() {
+
+    alert(
+        "Chat feature opened for " +
+        photographerName +
+        ".\n\nThis can be connected to Firebase later."
+    );
+
+}
+
+
+
+/* BOOK */
+
+
+function book() {
+
+    alert(
+        "Booking request started for " +
+        photographerName +
+        "."
+    );
+
+}
+
+
+</script>
+
+
+</body>
+</html>
+```
