@@ -1,0 +1,463 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Book My Click | Booking</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f8f8f8;
+    color: #333;
+}
+
+/* Navbar */
+nav {
+    background: #222;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #ff4d6d;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+nav a:hover {
+    color: #ff4d6d;
+}
+
+/* Heading */
+.heading {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.heading h1 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+/* Form container */
+.container {
+    width: 85%;
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.1);
+    margin-bottom: 50px;
+}
+
+/* Form */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #ff4d6d;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+/* Price */
+.price {
+    background: #fff0f3;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    color: #ff4d6d;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    flex: 1;
+    padding: 13px;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-btn {
+    background: #ff4d6d;
+}
+
+.submit-btn:hover {
+    background: #e6395c;
+}
+
+.cancel-btn {
+    background: #555;
+}
+
+.cancel-btn:hover {
+    background: #333;
+}
+
+/* Confirmation Popup */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    animation: popup 0.3s ease;
+}
+
+@keyframes popup {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: #ff4d6d;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    margin: 10px 0;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.modal-content button {
+    background: #ff4d6d;
+    margin-top: 20px;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* Responsive */
+@media(max-width:700px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 8px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">📸 Book My Click</div>
+
+    <div>
+        <a href="index.html">Home</a>
+        <a href="photographers.html">Photographers</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<!-- Heading -->
+<div class="heading">
+    <h1>Book Your Photographer 📸</h1>
+    <p>Capture your special moments with us!</p>
+</div>
+
+<!-- Booking Form -->
+<div class="container">
+
+    <form id="bookingForm">
+
+        <label>Your Name</label>
+        <input type="text" id="name" required
+               placeholder="Enter your name">
+
+        <label>Email</label>
+        <input type="email" id="email" required
+               placeholder="Enter your email">
+
+        <label>Phone Number</label>
+        <input type="tel" id="phone" required
+               pattern="[0-9]{10}"
+               maxlength="10"
+               placeholder="Enter 10-digit phone number">
+
+        <label>Event Type</label>
+        <select id="event" required>
+            <option value="">Select Event</option>
+            <option>Wedding</option>
+            <option>Birthday</option>
+            <option>Portrait</option>
+            <option>Corporate Event</option>
+            <option>Graduation</option>
+            <option>Engagement</option>
+            <option>Other</option>
+        </select>
+
+        <label>Photographer</label>
+        <select id="photographer" required>
+            <option value="">Select Photographer</option>
+            <option>Dream Lens Studio</option>
+            <option>Frame Stories</option>
+            <option>Click Moments</option>
+            <option>Corporate Clicks</option>
+            <option>Royal Frames</option>
+        </select>
+
+        <label>Event Date</label>
+        <input type="date" id="date" required>
+
+        <label>Event Location</label>
+        <input type="text" id="location" required
+               placeholder="Enter event location">
+
+        <label>Select Package</label>
+        <select id="package" onchange="updatePrice()" required>
+            <option value="">Select Package</option>
+            <option value="8000">Basic - ₹8,000</option>
+            <option value="18000">Premium - ₹18,000</option>
+            <option value="30000">Wedding - ₹30,000</option>
+        </select>
+
+        <!-- Price Display -->
+        <div class="price" id="price">
+            Total Price: ₹0
+        </div>
+
+        <label>Additional Requirements</label>
+        <textarea id="message"
+                  placeholder="Enter additional requirements..."></textarea>
+
+        <!-- Buttons -->
+        <div class="buttons">
+
+            <button type="submit" class="submit-btn">
+                Submit Booking
+            </button>
+
+            <button type="reset" class="cancel-btn">
+                Cancel
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<!-- Confirmation Popup -->
+<div class="modal" id="confirmationModal">
+
+    <div class="modal-content">
+
+        <h2>🎉 Booking Submitted!</h2>
+
+        <p>Your booking details have been submitted successfully.</p>
+
+        <hr>
+
+        <p><strong>Booking ID:</strong> <span id="confirmId"></span></p>
+        <p><strong>Name:</strong> <span id="confirmName"></span></p>
+        <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+        <p><strong>Phone:</strong> <span id="confirmPhone"></span></p>
+        <p><strong>Event:</strong> <span id="confirmEvent"></span></p>
+        <p><strong>Photographer:</strong> <span id="confirmPhotographer"></span></p>
+        <p><strong>Date:</strong> <span id="confirmDate"></span></p>
+        <p><strong>Location:</strong> <span id="confirmLocation"></span></p>
+        <p><strong>Package:</strong> <span id="confirmPackage"></span></p>
+        <p><strong>Total Price:</strong> <span id="confirmPrice"></span></p>
+        <p><strong>Requirements:</strong> <span id="confirmMessage"></span></p>
+
+        <button onclick="closeModal()">OK</button>
+
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+    © 2026 Book My Click | Capture Your Special Moments 📸
+</footer>
+
+<script>
+
+// Set minimum date as today
+let today = new Date();
+
+let localDate =
+    today.getFullYear() + "-" +
+    String(today.getMonth() + 1).padStart(2, "0") + "-" +
+    String(today.getDate()).padStart(2, "0");
+
+document.getElementById("date").min = localDate;
+
+
+// Update package price
+function updatePrice() {
+
+    let amount = document.getElementById("package").value;
+
+    if (amount === "") {
+        document.getElementById("price").innerText =
+            "Total Price: ₹0";
+    } else {
+        document.getElementById("price").innerText =
+            "Total Price: ₹" + Number(amount).toLocaleString("en-IN");
+    }
+}
+
+
+// Submit Booking
+document.getElementById("bookingForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let eventType = document.getElementById("event").value;
+    let photographer = document.getElementById("photographer").value;
+    let date = document.getElementById("date").value;
+    let location = document.getElementById("location").value;
+    let packageAmount = document.getElementById("package").value;
+    let message = document.getElementById("message").value;
+
+    let packageName =
+        document.getElementById("package").options[
+            document.getElementById("package").selectedIndex
+        ].text;
+
+    // Generate booking ID
+    let bookingId = "BMC" + Math.floor(100000 + Math.random() * 900000);
+
+    // Display confirmation details
+    document.getElementById("confirmId").innerText = bookingId;
+    document.getElementById("confirmName").innerText = name;
+    document.getElementById("confirmEmail").innerText = email;
+    document.getElementById("confirmPhone").innerText = phone;
+    document.getElementById("confirmEvent").innerText = eventType;
+    document.getElementById("confirmPhotographer").innerText = photographer;
+    document.getElementById("confirmDate").innerText = date;
+    document.getElementById("confirmLocation").innerText = location;
+    document.getElementById("confirmPackage").innerText = packageName;
+
+    document.getElementById("confirmPrice").innerText =
+        "₹" + Number(packageAmount).toLocaleString("en-IN");
+
+    document.getElementById("confirmMessage").innerText =
+        message || "No additional requirements";
+
+    // Show popup
+    document.getElementById("confirmationModal").style.display = "flex";
+
+});
+
+
+// Cancel Button - Reset Form
+document.getElementById("bookingForm").addEventListener("reset", function() {
+
+    setTimeout(function() {
+
+        document.getElementById("price").innerText =
+            "Total Price: ₹0";
+
+    }, 0);
+
+});
+
+
+// Close popup
+function closeModal() {
+
+    document.getElementById("confirmationModal").style.display = "none";
+
+    document.getElementById("bookingForm").reset();
+
+}
+
+
+// Close popup when clicking outside
+document.getElementById("confirmationModal").addEventListener("click", function(event) {
+
+    if (event.target === this) {
+        closeModal();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
